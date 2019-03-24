@@ -4,9 +4,9 @@ import {Component} from 'react';
 import {fetchPost} from '../actions';
 
 class PostList extends Component {
-componentDidMount(){
-    this.props.fetchPost();
-}
+    componentDidMount(){
+        this.props.fetchPost();
+    }
 
     render() {
         return (<div>PostList</div>)
