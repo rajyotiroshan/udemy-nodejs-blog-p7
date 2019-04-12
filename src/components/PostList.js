@@ -33,9 +33,12 @@ class PostList extends Component {
     }
 }
 
+//passed posts from state to Postlist as a props.
 const mapStateToProps = state => {
     return {posts: state.posts};
 }
+
+//connect PostList component to redux store and listen for state change
 export default connect(
     mapStateToProps,
     {fetchPosts})(PostList);
