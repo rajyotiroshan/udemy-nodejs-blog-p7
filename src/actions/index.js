@@ -3,10 +3,16 @@ import _ from 'lodash';
 
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     await dispatch(fetchPosts());
-    const userId = _.uniq(_.map(getState().posts, "userId"));
-    userId.forEach(id=> dispatch(fetchUser(id)));
 
+/*     const userId = _.uniq(_.map(getState().posts, "userId"));
+    userId.forEach(id=> dispatch(fetchUser(id))); */
     
+    //above solution or below.
+    _.chain(getState().posts)
+    .map('userId')
+    .uniq()
+    .forEach(id=>dispatch(fetchUser(id)))
+    .value();
 };
 
 export const fetchPosts =  () => async dispatch => {
